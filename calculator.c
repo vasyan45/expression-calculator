@@ -3,14 +3,14 @@
 #include <string.h>
 #include <stdio.h>
 
-#define ADD		0
-#define SUB		1
-#define MUL		2
-#define DIV		3
-#define POW		4
+#define ADD			0
+#define SUB			1
+#define MUL			2
+#define DIV			3
+#define POW			4
 #define LPAREN		5
 #define RPAREN		6
-#define INT		7
+#define INT			7
 #define NODES		1024
 
 struct token {
@@ -21,16 +21,16 @@ struct token {
 struct ast_node {
 	struct ast_node	*left;
 	struct ast_node	*right;
-	int		op;
-	int		value;
+	int				op;
+	int				value;
 };
 
-char		*buffer_data = 0;
-int		buffer_length = 0;
-int		buffer_index = 0;
+char			*buffer_data = 0;
+int				buffer_length = 0;
+int				buffer_index = 0;
 struct token	token;
 struct ast_node nodes[NODES];
-int		nodenum = 0;
+int				nodenum = 0;
 
 struct ast_node *expression(void);
 struct ast_node *unary(void);
@@ -149,7 +149,7 @@ struct ast_node *ast_alloc_node(void)
 
 struct ast_node *
 ast_create_node(int op, struct ast_node *left, struct ast_node *right,
-		int value)
+				int value)
 {
 	struct ast_node	*node;
 
@@ -194,7 +194,7 @@ struct ast_node *parser_primary(void)
 struct ast_node *parser_unary(void)
 {
 	struct ast_node	*node;
-	int		op;
+	int				op;
 	
 	if (token.token == ADD || token.token == SUB) {
 		op = token.token;
@@ -229,7 +229,7 @@ struct ast_node *parser_factor(void)
 struct ast_node *parser_term(void)
 {
 	struct ast_node	*left, *right;
-	int		op;
+	int				op;
 
 	left = parser_factor();
 
@@ -250,7 +250,7 @@ struct ast_node *parser_term(void)
 struct ast_node *expression(void)
 {
 	struct ast_node	*left, *right;
-	int		op;
+	int				op;
 
 	left = parser_term();
 	
@@ -304,7 +304,7 @@ int interpret(struct ast_node *node)
 
 int main(void)
 {
-	char		line[256];
+	char			line[256];
 	struct ast_node	*node;
 
 	printf("Welcome to the simple C calculator\n");
@@ -323,3 +323,4 @@ int main(void)
 	
 	return 0;
 }
+
