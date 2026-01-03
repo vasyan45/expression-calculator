@@ -33,7 +33,6 @@ struct ast_node nodes[NODES];
 int				nodenum = 0;
 
 struct ast_node *expression(void);
-struct ast_node *unary(void);
 
 void error(char *fmt, ...) {
 	va_list ap;
@@ -323,4 +322,5 @@ int main(void)
 	
 	return 0;
 }
+
 
